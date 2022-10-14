@@ -162,7 +162,7 @@ int main(void)
 
                 /* Builtin command */
                 if (!strcmp(cmd, "exit")) {
-                        fprintf(stderr, "+ complete 'exit' [0]\n");
+                        fprintf(stderr, "Bye...\n+ complete 'exit' [0]\n");
                         break;
                 }
                 
