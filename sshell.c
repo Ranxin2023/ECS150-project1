@@ -220,7 +220,7 @@ void execute_cmd(char * cmd){
             return_val[i+1]=second_val;
         }
     }
-    printf("+ complete '%s' ", original_cmd);
+    printf("+ completed '%s' ", original_cmd);
     for(size_t i=0;i<total_coll->num_of_commands;i++){
         printf("[%d]", return_val[i]);
     }
