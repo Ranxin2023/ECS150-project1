@@ -214,14 +214,14 @@ void execute_cmd(char * cmd){
     else{
         int first_val;
         int second_val;
-        for(int i=0;i<total_coll->num_of_commands-1;i++){
+        for(size_t i=0;i<total_coll->num_of_commands-1;i++){
             pipeline(&first_val, &second_val, total_coll->commands[i], total_coll->commands[i+1]);
             return_val[i]=first_val;
             return_val[i+1]=second_val;
         }
     }
     printf("+ complete '%s' ", original_cmd);
-    for(int i=0;i<total_coll->num_of_commands;i++){
+    for(size_t i=0;i<total_coll->num_of_commands;i++){
         printf("[%d]", return_val[i]);
     }
     printf("\n");
@@ -244,7 +244,7 @@ void pipeline(int * return_ptr1, int * return_ptr2, char * cmd1, char * cmd2){
 char * find_root_user(char * dir){
     int root_mark_count=0;
     int end_idx=strlen(dir);
-    for(int i=0;i<strlen(dir);i++){
+    for(size_t i=0;i<strlen(dir);i++){
         if(dir[i]=='/'){
             root_mark_count++;
         }
@@ -344,7 +344,7 @@ int execute_single_cmd(char * cmd){
     return 0;
 }
 char * parse_redirection(int index, char * cmd){
-    if(index==strlen(cmd)-1)return NULL;
+    if(index==(size_t)strlen(cmd)-1)return NULL;
     int end_idx=strlen(cmd);
     int start_idx=index;
     int start=0;
@@ -400,7 +400,7 @@ void parse_single_command(char * cmd, COMMAND * cmd_coll){
             cmd_coll->argvs[cmd_coll->argc]=malloc(sizeof(char)*(i-space_idx+1));
 
             
-            for(int j=space_idx;j<i;j++){
+            for(size_t j=space_idx;j<i;j++){
                 cmd_coll->argvs[cmd_coll->argc][j-space_idx]=cmd[j];    
             }
             cmd_coll->argc++;
@@ -416,7 +416,7 @@ void parse_single_command(char * cmd, COMMAND * cmd_coll){
             cmd_coll->argvs[cmd_coll->argc]=malloc(sizeof(char)*(strlen(cmd)-space_idx+1));
         
 
-        for(int j=space_idx;j<strlen(cmd);j++){
+        for(size_t j=space_idx;j<strlen(cmd);j++){
             
             cmd_coll->argvs[cmd_coll->argc][j-space_idx]=cmd[j];
             
