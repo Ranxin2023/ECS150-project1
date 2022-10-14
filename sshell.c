@@ -303,12 +303,12 @@ int execute_single_cmd(char * cmd){
         }
         else{
             char *cd;
-            char *arg;
+            //char *arg;
 
             if (!strcmp(cmd_coll->argvs[1], ".."))
             {
-                arg = pop(dirStack);
-                chdir(arg);
+                pop(dirStack);
+                chdir("..");
             }
             else
             {
