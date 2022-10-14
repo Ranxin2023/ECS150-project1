@@ -344,11 +344,11 @@ int execute_single_cmd(char * cmd){
     return 0;
 }
 char * parse_redirection(int index, char * cmd){
-    if(index==(size_t)strlen(cmd)-1)return NULL;
+    if(index==(int)strlen(cmd)-1)return NULL;
     int end_idx=strlen(cmd);
     int start_idx=index;
     int start=0;
-    for(int i=index+1;i<strlen(cmd);i++){
+    for(size_t i=index+1;i<strlen(cmd);i++){
         if(cmd[i]!=' '&&!start){
             start=1;
             start_idx=i;
